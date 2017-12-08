@@ -11,7 +11,7 @@ docker run -it --rm --name nfs --privileged -v $PWD/exports/:/exports -p 2049:20
 Run client in a loop:
 ```
 while true; do
-    docker run -it --rm --name client-nfs --cap-add=SYS_ADMIN --link nfs:nfs client-nfs:1
+    docker run -it --rm --name client-nfs --cap-add=SYS_ADMIN --security-opt apparmor:unconfined --link nfs:nfs client-nfs:1
     sleep 1
 done
 ```
